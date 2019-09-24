@@ -1,0 +1,17 @@
+version: '3'
+services:
+  redis1:
+    build: .
+    volumes:
+      - ./:/root/redis
+    working_dir: /root/redis/redis
+    command: 'redis-server redis-7000.conf'
+    networks:
+      mynet:
+        ipv4_address: 172.25.0.102     
+networks:
+  mynet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/24
