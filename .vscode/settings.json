@@ -1,5 +1,6 @@
 {
   "editor.formatOnPaste": false,
   "editor.formatOnSave": false,
-  "editor.formatOnType": false
+  "editor.formatOnType": false,
+  "python.pythonPath": "C:\\Users\\fusikai\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe"
 }

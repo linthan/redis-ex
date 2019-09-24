@@ -12,4 +12,7 @@ for port in ${redissentinelports[@]}; do
     redis-sentinel redis-sentinel-$port.conf
 done
 
-
+while true
+do
+    sleep 5s
+done

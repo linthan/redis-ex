@@ -5,10 +5,18 @@ services:
     volumes:
       - ./:/root/redis
     working_dir: /root/redis/redis
-    command: 'redis-server redis-7000.conf'
+    command: 'bash run.sh'
+    ports:
+      - "7000:7000"
+      - "7001:7001"
+      - "7003:7002"
+      - "26379:26379"
+      - "26380:26380"
+      - "26381:26381"  
     networks:
       mynet:
-        ipv4_address: 172.25.0.102     
+        ipv4_address: 172.25.0.102
+        
 networks:
   mynet:
     driver: bridge
