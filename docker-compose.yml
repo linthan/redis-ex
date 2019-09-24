@@ -1,6 +1,6 @@
 version: '3'
 services:
-  redis1:
+  redis-sentinel:
     build: .
     volumes:
       - ./:/root/redis
@@ -15,8 +15,7 @@ services:
       - "26381:26381"  
     networks:
       mynet:
-        ipv4_address: 172.25.0.102
-        
+        ipv4_address: 172.25.0.102        
 networks:
   mynet:
     driver: bridge
