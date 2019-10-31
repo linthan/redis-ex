@@ -9,16 +9,16 @@ services:
     ports:
       - "7000:7000"
       - "7001:7001"
-      - "7003:7002"
+      - "7002:7002"
       - "26379:26379"
       - "26380:26380"
       - "26381:26381"  
     networks:
       mynet:
-        ipv4_address: 172.25.0.102        
+        ipv4_address: 172.25.1.102        
 networks:
   mynet:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.25.0.0/24
+        - subnet: 172.25.1.0/24

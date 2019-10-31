@@ -11,7 +11,8 @@ for port in ${redissentinelports[@]}; do
     echo "start redis sentinel $port"
     redis-sentinel redis-sentinel-$port.conf
 done
-
+# mkdir -p /root/data/7000
+# redis-server redis-7000.conf
 while true
 do
     sleep 5s
