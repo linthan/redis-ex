@@ -4,7 +4,7 @@ services:
     build: .
     volumes:
       - ./:/root/redis
-    working_dir: /root/redis/redis
+    working_dir: /root/redis/redis-sentinel
     command: 'bash run.sh'
     ports:
       - "7000:7000"
@@ -15,7 +15,23 @@ services:
       - "26381:26381"  
     networks:
       mynet:
-        ipv4_address: 172.25.1.102        
+        ipv4_address: 172.25.1.102
+  redis-cluster:
+    build: .
+    volumes:
+      - ./:/root/redis
+    working_dir: /root/redis/redis-cluster
+    command: 'bash run.sh'
+    ports:
+      - "7000:7000"
+      - "7001:7001"
+      - "7002:7002"
+      - "7003:7003"
+      - "7004:7004"
+      - "7005:7005"  
+    networks:
+      mynet:
+        ipv4_address: 172.25.1.103               
 networks:
   mynet:
     driver: bridge
