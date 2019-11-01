@@ -1,0 +1,217 @@
+have_library: checking for tgetnum() in -lncurses... -------------------- no
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wno-maybe-uninitialized conftest.c  -L. -L../.. -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/usr/local/ruby/lib -L/usr/local/ruby/lib -lruby-static -lz -lpthread -lrt -lrt -ldl -lcrypt -lm   -lm   -lc"
+./ext/extmk.rb:60: warning: Insecure world writable dir /root/redis/redis/bin in PATH, mode 040777
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wno-maybe-uninitialized conftest.c  -L. -L../.. -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/usr/local/ruby/lib -L/usr/local/ruby/lib -lruby-static -lz -lpthread -lrt -lrt -ldl -lcrypt -lm  -lncurses  -lm   -lc"
+conftest.c: In function 't':
+conftest.c:14:57: error: 'tgetnum' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))tgetnum; return !p; }
+                                                         ^
+conftest.c:14:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option '-Wno-tautological-compare'
+cc1: warning: unrecognized command line option '-Wno-self-assign'
+cc1: warning: unrecognized command line option '-Wno-parentheses-equality'
+cc1: warning: unrecognized command line option '-Wno-constant-logical-operand'
+cc1: warning: unrecognized command line option '-Wno-cast-function-type'
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return 0;
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))tgetnum; return !p; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wno-maybe-uninitialized conftest.c  -L. -L../.. -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/usr/local/ruby/lib -L/usr/local/ruby/lib -lruby-static -lz -lpthread -lrt -lrt -ldl -lcrypt -lm  -lncurses  -lm   -lc"
+/usr/bin/ld: cannot find -lncurses
+collect2: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return 0;
+13: }
+14: extern void tgetnum();
+15: int t(void) { tgetnum(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for tgetnum() in -ltermcap... -------------------- no
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wno-maybe-uninitialized conftest.c  -L. -L../.. -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/usr/local/ruby/lib -L/usr/local/ruby/lib -lruby-static -lz -lpthread -lrt -lrt -ldl -lcrypt -lm  -ltermcap  -lm   -lc"
+conftest.c: In function 't':
+conftest.c:14:57: error: 'tgetnum' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))tgetnum; return !p; }
+                                                         ^
+conftest.c:14:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option '-Wno-tautological-compare'
+cc1: warning: unrecognized command line option '-Wno-self-assign'
+cc1: warning: unrecognized command line option '-Wno-parentheses-equality'
+cc1: warning: unrecognized command line option '-Wno-constant-logical-operand'
+cc1: warning: unrecognized command line option '-Wno-cast-function-type'
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return 0;
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))tgetnum; return !p; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wno-maybe-uninitialized conftest.c  -L. -L../.. -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/usr/local/ruby/lib -L/usr/local/ruby/lib -lruby-static -lz -lpthread -lrt -lrt -ldl -lcrypt -lm  -ltermcap  -lm   -lc"
+/usr/bin/ld: cannot find -ltermcap
+collect2: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return 0;
+13: }
+14: extern void tgetnum();
+15: int t(void) { tgetnum(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for tgetnum() in -lcurses... -------------------- no
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wno-maybe-uninitialized conftest.c  -L. -L../.. -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/usr/local/ruby/lib -L/usr/local/ruby/lib -lruby-static -lz -lpthread -lrt -lrt -ldl -lcrypt -lm  -lcurses  -lm   -lc"
+conftest.c: In function 't':
+conftest.c:14:57: error: 'tgetnum' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))tgetnum; return !p; }
+                                                         ^
+conftest.c:14:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option '-Wno-tautological-compare'
+cc1: warning: unrecognized command line option '-Wno-self-assign'
+cc1: warning: unrecognized command line option '-Wno-parentheses-equality'
+cc1: warning: unrecognized command line option '-Wno-constant-logical-operand'
+cc1: warning: unrecognized command line option '-Wno-cast-function-type'
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return 0;
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))tgetnum; return !p; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wno-maybe-uninitialized conftest.c  -L. -L../.. -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/usr/local/ruby/lib -L/usr/local/ruby/lib -lruby-static -lz -lpthread -lrt -lrt -ldl -lcrypt -lm  -lcurses  -lm   -lc"
+/usr/bin/ld: cannot find -lcurses
+collect2: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return 0;
+13: }
+14: extern void tgetnum();
+15: int t(void) { tgetnum(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for readline/readline.h... -------------------- no
+
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wno-maybe-uninitialized  conftest.c -o conftest.i"
+conftest.c:3:31: fatal error: readline/readline.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <readline/readline.h>
+/* end */
+
+--------------------
+
+have_header: checking for editline/readline.h... -------------------- no
+
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wno-maybe-uninitialized  conftest.c -o conftest.i"
+conftest.c:3:31: fatal error: editline/readline.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <editline/readline.h>
+/* end */
+
+--------------------
+
+/root/redis/ruby/ruby-2.6.5/ext/readline/extconf.rb:62: Neither readline nor libedit was found
+	/root/redis/ruby/ruby-2.6.5/ext/readline/extconf.rb:62:in `<top (required)>'
+	./ext/extmk.rb:214:in `load'
+	./ext/extmk.rb:214:in `block in extmake'
+	/root/redis/ruby/ruby-2.6.5/lib/mkmf.rb:331:in `open'
+	./ext/extmk.rb:210:in `extmake'
+	./ext/extmk.rb:568:in `block in <main>'
+	./ext/extmk.rb:564:in `each'
+	./ext/extmk.rb:564:in `<main>'

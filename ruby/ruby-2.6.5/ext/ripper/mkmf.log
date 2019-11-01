@@ -1,0 +1,13 @@
+find_executable: checking for bison... -------------------- no
+
+/root/redis/ruby/ruby-2.6.5/lib/mkmf.rb:1565: warning: Insecure world writable dir /root/redis/redis/bin in PATH, mode 040777
+--------------------
+
+extconf.h is:
+/* begin */
+1: #ifndef EXTCONF_H
+2: #define EXTCONF_H
+3: #define RIPPER 1
+4: #endif
+/* end */
+
